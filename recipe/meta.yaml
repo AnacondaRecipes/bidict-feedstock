@@ -1,7 +1,7 @@
 {% set name = "bidict" %}
-{% set version = "0.21.2" %}
+{% set version = "0.22.0" %}
 {% set compress_type = "tar.gz" %}
-{% set hash_val = "4fa46f7ff96dc244abfc437383d987404ae861df797e2fd5b190e233c302be09" %}
+{% set hash_val = "5c826b3e15e97cc6e615de295756847c282a79b79c5430d3bfc909b1ac9f5bd8" %}
 
 package:
   name: {{ name|lower }}
