@@ -1,18 +1,13 @@
 {% set name = "bidict" %}
 {% set version = "0.23.1" %}
-{% set commit_id = "636f5a610f0e0b9a1e056fc72b688720c114403b" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  - url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-    sha256: 03069d763bc387bbd20e7d49914e75fc4132a41937fa3405417e1a5a2d006d71
-    # tests and tests data files
-  - url: https://github.com/jab/bidict/archive/{{ commit_id }}.tar.gz
-    sha256: 97c6b21db087960ed54752aaaf800cd52fe2f31cc3d48efde727c43e1704bf8d
-    folder: tests
+  url: https://github.com/jab/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: b3619436e1e1e3cba15856839666edcb769fce97b47f5bba5e2789b03eed3156
 
 build:
   skip: true  # [py<38]
