@@ -37,7 +37,7 @@ test:
   commands:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
-    - python -m pytest
+    - python -m pytest -v tests
 
 about:
   home: https://bidict.readthedocs.io
