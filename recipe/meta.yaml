@@ -36,7 +36,9 @@ about:
   home: https://github.com/jab/bidict
   license: MPL-2.0
   license_file: LICENSE
+  license_family: MOZILLA
   summary: Efficient, Pythonic bidirectional map implementation and related functionality
+  description: The bidirectional mapping library for Python.
   dev_url: https://github.com/jab/bidict
   doc_url: https://bidict.readthedocs.io
 
