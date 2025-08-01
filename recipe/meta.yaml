@@ -1,42 +1,52 @@
 {% set name = "bidict" %}
-{% set version = "0.21.2" %}
-{% set compress_type = "tar.gz" %}
-{% set hash_val = "4fa46f7ff96dc244abfc437383d987404ae861df797e2fd5b190e233c302be09" %}
+{% set version = "0.23.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.{{ compress_type }}
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ hash_val }}
+  url: https://github.com/jab/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: b3619436e1e1e3cba15856839666edcb769fce97b47f5bba5e2789b03eed3156
 
 build:
-  noarch: python
+  skip: true  # [py<38]
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - pip
-    - setuptools
-    - setuptools_scm
+    - setuptools >=40.9.0
+    - wheel
 
   run:
-    - python >=3.6
-    - setuptools
+    - python
 
 test:
   imports:
     - bidict
+  source_files:
+    - tests
+  requires:
+    - pip
+    - pytest
+    - hypothesis
+    - typing_extensions
+  commands:
+    - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+    - python -m pytest -v tests
 
 about:
   home: https://bidict.readthedocs.io
   license: MPL-2.0
   license_file: LICENSE
-  summary: Efficient, Pythonic bidirectional map implementation and related functionality
+  license_family: MOZILLA
+  summary: The bidirectional mapping library for Python.
+  description: |
+    The bidict library provides several friendly, efficient data structures for working with bidirectional mappings in Python.
   dev_url: https://github.com/jab/bidict
   doc_url: https://bidict.readthedocs.io
 
