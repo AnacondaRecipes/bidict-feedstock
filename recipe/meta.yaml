@@ -1,5 +1,5 @@
 {% set name = "bidict" %}
-{% set version = "0.23.1" %}
+{% set version = "0.24.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/jab/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: b3619436e1e1e3cba15856839666edcb769fce97b47f5bba5e2789b03eed3156
+  sha256: 0faeba6d5d5276d5b59ce71809b2f16d18a3d66b07791007714e09d60e8ad8ad
 
 build:
-  skip: true  # [py<38]
+  skip: true  # [py<311]
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
@@ -20,9 +20,10 @@ requirements:
     - pip
     - setuptools >=40.9.0
     - wheel
-
+    - uv_build >=0.8.13,<0.12
   run:
     - python
+    - typing_extensions >=4.0  # [py<312]
 
 test:
   imports:
